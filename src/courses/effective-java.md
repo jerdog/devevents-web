@@ -1,5 +1,5 @@
 ---
-title: Effective Coding Principles and Patterns in Java 15
+title: Effective Coding Principles and Patterns in Java 16
 subtitle: 2-day certification training for Java developers, team leaders and architects.
 tags:
     - Java
