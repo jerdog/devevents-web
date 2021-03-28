@@ -15,7 +15,7 @@ offers:
       priceHint: per person
       soldOut: true
     - name: Online, Zoom
-      date: 2 days, 25-26 March 2021
+      date: 2 days, 28-29 Oct 2021
       price: 999
       priceHint: per person
       soldOut: false
