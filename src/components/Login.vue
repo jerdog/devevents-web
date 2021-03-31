@@ -1,11 +1,7 @@
 <template>
   <div>
-    <a
-      class="has-text-light is-size-7"
-      @click="active = true && signIn('#firebaseui-auth-container')"
-      >login</a
-    >
-    <div class="modal" v-bind:class="{ 'is-active': active }">
+    <a class="has-text-light is-size-7" @click="signIn()">login</a>
+    <div class="modal" v-bind:class="{ 'is-active': authInProgress }">
       <div class="modal-background"></div>
       <div class="modal-content">
         <section id="firebaseui-auth-container"></section>
@@ -13,21 +9,19 @@
       <button
         class="modal-close is-large"
         aria-label="close"
-        @click="active = false"
+        @click="stopAuth()"
       ></button>
     </div>
   </div>
 </template>
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 export default {
-  data: function() {
-    return {
-      active: false
-    };
+  computed: {
+    ...mapState("auth", ["authInProgress"])
   },
   methods: {
-    ...mapActions("auth", ["signIn"])
+    ...mapActions("auth", ["signIn", "stopAuth"])
   }
 };
 </script>

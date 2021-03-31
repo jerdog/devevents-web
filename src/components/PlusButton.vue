@@ -4,28 +4,27 @@
     :to="{ name: 'new', query: $route.params }"
     class="button has-background-success has-text-white"
   >
-    <font-awesome-icon icon="plus" title="Add new event" />
+    <span>
+      <font-awesome-icon icon="plus" title="Add new event" />
+      Add event
+    </span>
   </router-link>
   <a
     v-else
     class="button has-background-success has-text-white"
-    @click="loginNeeded()"
+    @click="signIn()"
   >
-    <font-awesome-icon icon="plus" />
+    <span>
+      <font-awesome-icon icon="plus" title="Add new event" />
+      Add event
+    </span>
   </a>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   methods: {
-    loginNeeded() {
-      this.$notify({
-        ignoreDuplicates: true,
-        title: "Guests cannot add events. Please login first.",
-        type: "error",
-        duration: -1
-      });
-    }
+    ...mapActions("auth", ["signIn"])
   },
   computed: {
     ...mapGetters("auth", ["isSignedIn"])
@@ -43,9 +42,7 @@ export default {
   bottom: 15px;
   font-size: 12px;
   box-shadow: -6px 6px 22px -12px rgb(153, 116, 116);
-  padding: 10px 16px;
   font-size: 18px;
-  border-radius: 99px;
   border: 0;
 }
 </style>

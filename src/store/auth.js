@@ -4,6 +4,7 @@ import emojiStrip from "emoji-strip";
 export default {
   namespaced: true,
   state: {
+    authInProgress: false,
     user: {}
   },
   getters: {
@@ -18,7 +19,8 @@ export default {
     }
   },
   actions: {
-    signIn({ commit }, containerSelector) {
+    signIn({ commit }) {
+      commit("authInProgress", true);
       const signInSuccessWithAuthResult = ({ user }) => {
         user
           .getIdTokenResult(true)
@@ -39,9 +41,13 @@ export default {
           auth.EmailAuthProvider.PROVIDER_ID
         ]
       };
-      ui.start(containerSelector, uiConfig);
+      ui.start("#firebaseui-auth-container", uiConfig);
+    },
+    stopAuth({ commit }) {
+      commit("authInProgress", false);
     },
     signOut({ commit }) {
+      commit("authInProgress", false);
       firebase
         .auth()
         .signOut()
@@ -50,6 +56,9 @@ export default {
     }
   },
   mutations: {
+    authInProgress(state, inProgress) {
+      state.authInProgress = inProgress;
+    },
     setUser(state, user) {
       state.user = {
         name: user.displayName,
