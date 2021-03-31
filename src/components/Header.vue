@@ -24,28 +24,6 @@
             <div class="column is-narrow">
               <span class="has-text-white" href="#"></span>
             </div>
-            <div class="column is-narrow">
-              <router-link
-                class="has-text-white-ter is-size-7-mobile"
-                :class="{
-                  'has-text-weight-bold':
-                    $route.name === 'confs' || $route.name === 'conf'
-                }"
-                :to="{ path: '/' }"
-                >Conferences</router-link
-              >
-            </div>
-            <div class="column is-narrow">
-              <router-link
-                class="has-text-white-ter is-size-7-mobile"
-                :class="{
-                  'has-text-weight-bold':
-                    $route.name === 'courses' || $route.name === 'course'
-                }"
-                :to="{ name: 'courses' }"
-                >Training &amp; certification</router-link
-              >
-            </div>
             <div class="column" v-if="isSignedIn">
               <div class="columns is-mobile is-pulled-right">
                 <div class="column is-narrow">

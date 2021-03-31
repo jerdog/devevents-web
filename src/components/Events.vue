@@ -106,16 +106,14 @@
                 <br />
               </div>
               <div class="column is-narrow">
-                <figure class="image is-32x32" v-if="event.top">
-                  <router-link :to="{ name: 'conf', params: { id: event.id } }">
+                <figure class="image is-32x32" v-if="isFeatured(event)">
+                  <a :href="event.url" target="_blank">
                     <img
-                      :src="
-                        'https://pbs.twimg.com/profile_images/1109010258335285250/5TdYTDZg_400x400.png'
-                      "
+                      :src="'https://dossier.glitch.me/avatar/' + event.twitter"
                       :alt="'Twitter icon for ' + event.name"
                       class="icon is-rounded"
                     />
-                  </router-link>
+                  </a>
                 </figure>
                 <figure v-else class="image is-32x32">
                   <img
@@ -127,7 +125,16 @@
               </div>
               <div class="column">
                 <h2 class="title is-5">
+                  <a
+                    :href="event.url"
+                    target="_blank"
+                    v-if="isFeatured(event)"
+                    class="has-text-dark is-uppercase"
+                  >
+                    {{ event.name }}
+                  </a>
                   <router-link
+                    v-else
                     class="has-text-dark is-uppercase"
                     :to="{ name: 'conf', params: { id: event.id } }"
                     >{{ event.name }}</router-link
@@ -276,6 +283,10 @@ export default {
     }
   },
   methods: {
+    isFeatured(event) {
+      const featured = ["devternity.com", "devchampions.com", "principal.dev"];
+      return featured.some(feat => event.url.indexOf(feat) >= 0);
+    },
     title() {
       return !this.isOnline
         ? (this.topicName() ? this.topicName() : "Developer") +
