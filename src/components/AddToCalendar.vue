@@ -16,20 +16,14 @@
       role="menu"
     >
       <div class="dropdown-content">
-        <a class="dropdown-item" @click="exportTo('appleical')">
-          Apple/iCal
-        </a>
         <a class="dropdown-item" @click="exportTo('google')">
           Google Calendar
         </a>
-        <a class="dropdown-item" @click="exportTo('office365')">
-          Office 365
+        <a class="dropdown-item" @click="exportTo('ical')">
+          iCal
         </a>
         <a class="dropdown-item" @click="exportTo('outlook')">
           Outlook
-        </a>
-        <a class="dropdown-item" @click="exportTo('outlookcom')">
-          Outlook.com
         </a>
         <a class="dropdown-item" @click="exportTo('yahoo')">
           Yahoo
@@ -39,6 +33,9 @@
   </div>
 </template>
 <script>
+import * as Add2Calendar from "add2calendar";
+import dayjs from "dayjs";
+
 export default {
   props: {
     event: {
@@ -61,15 +58,29 @@ export default {
         : `${this.event.city}, ${this.event.country}`;
     },
     exportTo(service) {
-      // remember to url encode
-      window.open(
-        `https://www.addevent.com/create/?service=${service}&dallday=true&dstart=${
-          this.event.startDate
-        }&dend=${
-          this.event.endDate
-        }&dsum=${this.title()}&ddesc=${this.description()}&dloca=${this.location()}`,
-        "_blank"
-      );
+      const calEvent = new Add2Calendar({
+        title: this.title(),
+        start: this.event.startDate,
+        end: dayjs(this.event.endDate)
+          .add(1, "day")
+          .toDate(),
+        location: this.location(),
+        description: this.description(),
+        isAllDay: true
+      });
+
+      if (service === "google") {
+        window.open(calEvent.getGoogleUrl(), "_blank");
+      }
+      if (service === "ical") {
+        window.open(calEvent.getICalUrl(), "_blank");
+      }
+      if (service === "outlook") {
+        window.open(calEvent.getOutlookUrl(), "_blank");
+      }
+      if (service === "yahoo") {
+        window.open(calEvent.getYahooUrl(), "_blank");
+      }
     }
   }
 };
