@@ -151,7 +151,10 @@
                       <font-awesome-icon icon="times" class="has-text-danger" />
                     </a>
                   </span>
-                  <span v-if="event.top" class="tag is-borderless is-uppercase">
+                  <span
+                    v-if="isFeatured(event)"
+                    class="tag is-borderless is-uppercase"
+                  >
                     <font-awesome-icon
                       :icon="['far', 'heart']"
                       class="has-text-danger"

@@ -2,6 +2,9 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 
+import utc from "dayjs/plugin/utc";
+dayjs.extend(utc);
+
 export function formatCfp(cfpDate) {
   const cfp = dayjs(cfpDate);
   if (cfp.diff(dayjs(), "days") >= 0) {
@@ -29,12 +32,12 @@ export function years() {
 }
 
 export function formatRange(startDate, endDate) {
-  const start = dayjs(startDate);
+  const start = dayjs.utc(startDate);
   const oneDayEvent = !endDate || endDate === startDate;
   if (oneDayEvent) {
     return start.format("MMM D");
   } else {
-    const end = dayjs(endDate);
+    const end = dayjs.utc(endDate);
     const sameMonth = start.month() == end.month();
     if (sameMonth) {
       return end.format(`MMM ${start.format("D")}-D`);
