@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="container section" role="main">
-      <h1 class="title">Edit a conference</h1>
+      <h1 class="title">Edit the event</h1>
       <hr />
       <div class="field is-horizontal">
         <div class="field-body">

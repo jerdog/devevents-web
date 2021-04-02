@@ -36,7 +36,8 @@
                       <span v-if="event.countryCode === 'ON'">
                         Online
                       </span>
-                      <ManyTopics :topics="event.topics" /> conference
+                      <ManyTopics :topics="event.topics" />
+                      {{ event.category || "conference" }}
                       <span v-if="event.countryCode !== 'ON'">
                         in {{ event.city }}, {{ event.country }}</span
                       >
