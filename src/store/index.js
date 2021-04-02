@@ -3,7 +3,6 @@ import Vuex from "vuex";
 import lazyAxios from "../utils/axios";
 
 import auth from "./auth";
-import karma from "./karma";
 import creation from "./creation";
 import fetching from "./fetching";
 import router from "../router";
@@ -19,7 +18,6 @@ export default new Vuex.Store({
   modules: {
     creation,
     fetching,
-    karma,
     auth
   },
   state: {

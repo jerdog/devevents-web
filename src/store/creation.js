@@ -11,7 +11,7 @@ export default {
     types: []
   },
   actions: {
-    async createNew({ commit, dispatch }, event) {
+    async createNew({ commit }, event) {
       const axios = await lazyAxios();
       const goToNewEvent = continent => {
         router.push({
@@ -26,7 +26,6 @@ export default {
       return axios
         .post(`/events/new`, event)
         .then(response => {
-          dispatch("karma/inc", {}, { root: true });
           goToNewEvent(response.data.continentCode);
         })
         .catch(err => commit("creationFailed", err.response));

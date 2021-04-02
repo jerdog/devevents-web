@@ -11,8 +11,6 @@ What makes this listing awesome?
 
 ✔️ RSS feed support
 
-✔️ Karma for event contributions
-
 To keep the listing clean and relevant, all events undergo manual approval.
 
 ----
