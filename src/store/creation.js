@@ -18,7 +18,7 @@ export default {
           name: "confs",
           params: {
             continent,
-            country: event.countryCode,
+            country: event.countryCode != "ON" ? event.countryCode : undefined,
             topic: event.topics[0]
           }
         });

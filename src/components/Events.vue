@@ -167,12 +167,12 @@ export default {
     title() {
       return !this.isOnline
         ? (this.topicName() ? this.topicName() : "Developer") +
-            " events in " +
+            " conferences and courses in " +
             this.locationName() +
             ` ${years()}`
         : "Online " +
             (this.topicName() ? this.topicName() : "developer") +
-            " events" +
+            " conferences and courses" +
             ` ${years()}`;
     },
     sortingChanged() {

@@ -311,11 +311,7 @@
         <button class="button" @click="close()">
           close
         </button>
-        <button
-          class="button is-success"
-          :disabled="isDescriptionTooLong()"
-          @click="submitForm()"
-        >
+        <button class="button is-success" @click="submitForm()">
           Submit
         </button>
       </div>
@@ -339,7 +335,6 @@ const locale = new Locale();
 export default {
   data: () => {
     return {
-      descriptionLimit: 1500,
       topicsOrdered,
       states: states,
       newEvent: {
@@ -434,9 +429,6 @@ export default {
   },
   methods: {
     tomorrow,
-    isDescriptionTooLong() {
-      return this.newEvent.description.length > this.descriptionLimit;
-    },
     countrySelected() {
       delete this.newEvent.stateCode;
       delete this.newEvent.city;
