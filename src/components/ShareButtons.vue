@@ -58,7 +58,7 @@
         <ShareNetwork
           class="dropdown-item"
           network="telegram"
-          :description="`Check out this ${topicName()} conference`"
+          :description="`Check out this ${topicName()} ${category()}`"
           :title="event.name"
           :url="url()"
         >
@@ -67,7 +67,7 @@
         <ShareNetwork
           class="dropdown-item"
           network="email"
-          :title="`Check out this ${topicName()} conference: ` + event.name"
+          :title="`Check out this ${topicName()} ${category()}: ` + event.name"
           :url="url()"
         >
           Send to Email
@@ -97,7 +97,7 @@ export default {
         startDate,
         endDate
       } = this.event;
-      const what = `${this.topicName()} conference ${name} is coming`;
+      const what = `${this.topicName()} ${this.category()} ${name} is coming`;
       const when = `${formatRange(startDate, endDate)}, ${dayjs(
         startDate
       ).year()}`;
@@ -115,6 +115,9 @@ export default {
     },
     url() {
       return `https://dev.events/conferences/${this.event.id}`;
+    },
+    category() {
+      return this.event.category || "conference";
     },
     topicName() {
       const [firstTopicCode] = this.event.topics;

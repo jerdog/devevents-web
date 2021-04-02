@@ -11,10 +11,10 @@ export default {
   computed: {
     count() {
       const stats = this.stats;
-      if (stats.total == 1) return "showing one available conference";
+      if (stats.total == 1) return "showing one available event";
       if (stats.shown == stats.total)
-        return `showing all ${stats.shown} conferences`;
-      else return `showing ${stats.shown} out of ${stats.total} conferences`;
+        return `showing all ${stats.shown} events`;
+      else return `showing ${stats.shown} out of ${stats.total} events`;
     },
     ...mapState(["stats"])
   }

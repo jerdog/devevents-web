@@ -28,8 +28,10 @@ export default {
       ? "OnlineEventAttendanceMode"
       : "OfflineEventAttendanceMode";
     const description = online
-      ? `Online ${this.event.topic} developer conference`
-      : `${this.event.topic} developer conference in ${this.event.city}, ${this.event.country}`;
+      ? `Online ${this.event.topic} developer ${this.event.category ||
+          "conference"}`
+      : `${this.event.topic} developer ${this.event.category ||
+          "conference"} in ${this.event.city}, ${this.event.country}`;
     this.jsonld = {
       "@context": "http://schema.org",
       "@type": "EducationEvent",

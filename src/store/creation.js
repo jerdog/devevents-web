@@ -7,7 +7,8 @@ export default {
     validationErrors: [],
     globalError: undefined,
     topics: [],
-    countries: []
+    countries: [],
+    types: []
   },
   actions: {
     async createNew({ commit, dispatch }, event) {
@@ -52,6 +53,7 @@ export default {
       state.validationErrors = {};
       state.globalError = undefined;
       state.topics = data.topics;
+      state.types = data.types;
       state.countries = data.countries;
     }
   }

@@ -1,11 +1,39 @@
 <template>
   <div>
     <section class="container section" role="main">
-      <h1 class="title">🚀 Add a conference</h1>
+      <h1 class="title">
+        {{ newEvent.name || "New " }} {{ newEvent.category }}
+      </h1>
       <hr />
       <article class="message is-danger" v-if="globalError">
         <div class="message-body">{{ globalError }}</div>
       </article>
+
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Type</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <div class="buttons has-addons">
+                <button
+                  class="button"
+                  v-bind:key="type"
+                  v-for="type in types"
+                  @click="newEvent.category = type"
+                  v-bind:class="{
+                    'is-success is-selected': newEvent.category == type
+                  }"
+                >
+                  {{ type }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="field is-horizontal">
         <div class="field-label is-normal">
           <label class="label">Specialization</label>
@@ -31,7 +59,7 @@
                     <div class="column is-narrow">
                       <img
                         :src="'/icons/topics/' + option.code + '.png'"
-                        :alt="option.code + ' conference'"
+                        :alt="option.code"
                         class="icon"
                       />
                     </div>
@@ -248,27 +276,31 @@
       </div>
       <div class="field is-horizontal">
         <div class="field-label">
-          <label class="label">Free event</label>
+          <label class="label">&nbsp;</label>
         </div>
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <label class="radio">
-                <input
-                  type="radio"
-                  v-model="newEvent.price.free"
-                  v-bind:value="true"
-                />
-                Yes
-              </label>
-              <label class="radio">
-                <input
-                  type="radio"
-                  v-model="newEvent.price.free"
-                  v-bind:value="false"
-                />
-                No
-              </label>
+              <div class="buttons has-addons">
+                <button
+                  class="button"
+                  @click="newEvent.price.free = true"
+                  v-bind:class="{
+                    'is-success is-selected': newEvent.price.free
+                  }"
+                >
+                  Free {{ newEvent.category }}
+                </button>
+                <button
+                  class="button"
+                  @click="newEvent.price.free = false"
+                  v-bind:class="{
+                    'is-danger is-selected': !newEvent.price.free
+                  }"
+                >
+                  Paid {{ newEvent.category }}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -311,9 +343,10 @@ export default {
       topicsOrdered,
       states: states,
       newEvent: {
+        category: "conference",
         topics: [],
         price: {
-          free: true
+          free: false
         },
         dates: {
           start: undefined,
@@ -371,6 +404,7 @@ export default {
     ...mapState("creation", {
       validationErrors: state => state.validationErrors,
       globalError: state => state.globalError,
+      types: state => state.types,
       countries: state =>
         state.countries.map(({ code, currency, name }) => ({
           code,
@@ -394,7 +428,7 @@ export default {
       return {
         separator: " ",
         complement: " ",
-        inner: "Add a conference"
+        inner: "Add an event"
       };
     }
   },

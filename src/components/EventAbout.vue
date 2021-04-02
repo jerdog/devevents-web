@@ -91,7 +91,7 @@
         :active="!frameLoaded"
       ></loading>
       <iframe
-        title="embedded conference's website"
+        title="embedded event's website"
         sandbox="allow-same-origin allow-popups allow-scripts"
         :src="normalized(event.url)"
         @load="iframeLoaded"
@@ -102,7 +102,7 @@
         class="has-text-white section is-size-1 is-size-3-mobile has-text-centered"
       >
         ¯\_(ツ)_/¯ <br /><br />Preview is not available. <br />Visit
-        conference's website directly:
+        {{ event.category || "conference" }}'s website directly:
         <br />
         <br />
         <a
