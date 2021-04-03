@@ -131,9 +131,6 @@ const topics = {
   fp: {
     name: "Functional programming"
   },
-  fsharp: {
-    name: "F sharp"
-  },
   fintech: {
     name: "Fintech"
   },
