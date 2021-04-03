@@ -105,7 +105,7 @@ const topics = {
     name: "UX"
   },
   qa: {
-    name: "Testing and QA"
+    name: "Testing/QA"
   },
   blockchain: {
     name: "Blockchain"
@@ -135,7 +135,7 @@ const topics = {
     name: "Rust"
   },
   ml: {
-    name: "Machine learning & AI"
+    name: "ML/AI"
   }
 };
 
