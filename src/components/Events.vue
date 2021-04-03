@@ -77,7 +77,7 @@
         </div>
         <div class="column is-two-thirds">
           <section class="section">
-            <div class="block">
+            <div class="block" v-if="hasSomeFeatured">
               <h3 class="title is-4">
                 <font-awesome-icon
                   :icon="['far', 'heart']"
@@ -187,6 +187,9 @@ export default {
     ...mapActions(["fetchEvents", "moreEvents"])
   },
   computed: {
+    hasSomeFeatured: function() {
+      return this.events.some(({ featured }) => featured === true);
+    },
     ...mapState([
       "isOnline",
       "events",
