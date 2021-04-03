@@ -68,9 +68,6 @@ const topics = {
   serverless: {
     name: "Serverless"
   },
-  scrum: {
-    name: "Scrum"
-  },
   management: {
     name: "Management"
   },
