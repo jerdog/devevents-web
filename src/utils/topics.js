@@ -93,7 +93,7 @@ const topics = {
     name: "Blockchain"
   },
   recruit: {
-    name: "Career/Hiring/HR",
+    name: "Career/Hiring/HR"
   },
   vr: {
     name: "AR/VR/XR"

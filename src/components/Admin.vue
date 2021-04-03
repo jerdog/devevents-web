@@ -5,14 +5,13 @@
       <div class="tags are-medium">
         <span
           v-bind:class="{
-            'is-success': topic.count >= topic.required,
-            'is-warning': topic.count < topic.required && topic.required === 3,
-            'is-danger': topic.count < topic.required && topic.required === 5
+            'is-success': topic.count >= 5,
+            'is-danger': topic.count < 5
           }"
           class="tag"
           v-bind:key="topic.name"
           v-for="topic in topics"
-          >{{ topic.name }} ({{ topic.count }}/{{ topic.required }})</span
+          >{{ topic.name }} ({{ topic.count }}/{{ 5 }})</span
         >
       </div>
     </section>
