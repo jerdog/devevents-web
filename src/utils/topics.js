@@ -14,9 +14,6 @@ const topics = {
   iot: {
     name: "Hardware/IoT"
   },
-  api: {
-    name: "API"
-  },
   web: {
     name: "Web/Frontend"
   },
@@ -95,8 +92,8 @@ const topics = {
   blockchain: {
     name: "Blockchain"
   },
-  career: {
-    name: "Career"
+  recruit: {
+    name: "Career/Hiring/HR",
   },
   vr: {
     name: "AR/VR/XR"
