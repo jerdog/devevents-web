@@ -12,7 +12,7 @@ const topics = {
     name: "Mobile"
   },
   iot: {
-    name: "IoT"
+    name: "Hardware/IoT"
   },
   api: {
     name: "API"
@@ -22,9 +22,6 @@ const topics = {
   },
   angular: {
     name: "Angular"
-  },
-  hardware: {
-    name: "Hardware"
   },
   web: {
     name: "Web/Frontend"
