@@ -27,10 +27,7 @@ const topics = {
     name: "Web/Frontend"
   },
   data: {
-    name: "Data science"
-  },
-  database: {
-    name: "Databases"
+    name: "Data"
   },
   devops: {
     name: "DevOps"
