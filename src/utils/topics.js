@@ -119,12 +119,6 @@ const topics = {
   cloud: {
     name: "Cloud"
   },
-  docker: {
-    name: "Docker"
-  },
-  k8s: {
-    name: "Kubernetes"
-  },
   fp: {
     name: "Functional programming"
   },
