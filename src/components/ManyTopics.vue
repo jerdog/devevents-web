@@ -1,6 +1,6 @@
 <template>
   <span>
-    <span v-for="(topic, index) in topics" v-bind:key="topic">
+    <span v-for="(topic, index) in topicsAlphabetically" v-bind:key="topic">
       <span v-if="topics.length !== 1 && index === topics.length - 1">
         and
       </span>
@@ -24,6 +24,11 @@ export default {
     topics: {
       default: () => [],
       type: Array
+    }
+  },
+  computed: {
+    topicsAlphabetically: function() {
+      return [...this.topics].sort();
     }
   },
   methods: {
