@@ -83,12 +83,6 @@ const topics = {
   ruby: {
     name: "Ruby and Rails"
   },
-  android: {
-    name: "Android"
-  },
-  ios: {
-    name: "iOS"
-  },
   security: {
     name: "Security"
   },
