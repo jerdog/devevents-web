@@ -33,7 +33,7 @@ const topics = {
     name: "React"
   },
   fullstack: {
-    name: "Full-stack"
+    name: "Architecture/Full-stack"
   },
   golang: {
     name: "Golang"
