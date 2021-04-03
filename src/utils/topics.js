@@ -18,7 +18,7 @@ const topics = {
     name: "Web/Frontend"
   },
   data: {
-    name: "Data"
+    name: "Data/AI/ML"
   },
   devops: {
     name: "DevOps"
@@ -97,9 +97,6 @@ const topics = {
   },
   rust: {
     name: "Rust"
-  },
-  ml: {
-    name: "ML/AI"
   }
 };
 
