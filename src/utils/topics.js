@@ -17,12 +17,6 @@ const topics = {
   api: {
     name: "API"
   },
-  vue: {
-    name: "Vue"
-  },
-  angular: {
-    name: "Angular"
-  },
   web: {
     name: "Web/Frontend"
   },
