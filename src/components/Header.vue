@@ -55,6 +55,12 @@
                       role="menu"
                     >
                       <div class="dropdown-content">
+                        <router-link
+                          v-if="isAdmin"
+                          class="dropdown-item"
+                          :to="{ path: '/admin' }"
+                          >admin</router-link
+                        >
                         <a class="dropdown-item" @click="signOut()">log out</a>
                       </div>
                     </div>

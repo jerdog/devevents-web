@@ -4,6 +4,7 @@ import Events from "../components/Events";
 import EventAbout from "../components/EventAbout";
 import NewEvent from "../components/NewEvent";
 import EditEvent from "../components/EditEvent";
+import Admin from "../components/Admin";
 
 Vue.use(VueRouter);
 
@@ -12,6 +13,11 @@ const routes = [
     path: "/new",
     name: "new",
     component: NewEvent
+  },
+  {
+    path: "/admin",
+    name: "admin",
+    component: Admin
   },
   {
     path: "/:continent([A-Z]{2})?/:country([A-Z]{2})?/:topic([a-z0-9]+)?",

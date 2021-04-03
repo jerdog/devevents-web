@@ -2,12 +2,6 @@
 // Don't fotget to update topics in devevents-api
 // !!!
 const topics = {
-  softskills: {
-    name: "Soft skills"
-  },
-  it: {
-    name: "IT"
-  },
   clojure: {
     name: "Clojure"
   },
@@ -33,10 +27,7 @@ const topics = {
     name: "Hardware"
   },
   web: {
-    name: "Web"
-  },
-  frontend: {
-    name: "Frontend"
+    name: "Web/Frontend"
   },
   data: {
     name: "Data science"
