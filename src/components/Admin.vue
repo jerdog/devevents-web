@@ -87,9 +87,10 @@ export default {
       const organizer = `@${twitter}%0A%0A`;
       const endedOn = dayjs(endDate).format("MMM DD, YYYY");
       const expiredAgo = formatRelative(endDate);
-      const emoji = this.emojis[countryCode].emoji;
-
-      const location = countryCode === "ON" ? "🌍 Online" : `${emoji} ${city}`;
+      const location =
+        countryCode === "ON"
+          ? "🌍 Online"
+          : `${this.emojis[countryCode].emoji} ${city}`;
       const message = `Just wanted to let you know that your ${category} ${name} (${endedOn}. ${location}) has ended ${expiredAgo} and expired at dev.events.%0A%0A`;
       const callToAction = "❤️ Remember to add your next event to dev.events.";
 
