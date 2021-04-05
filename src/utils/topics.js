@@ -2,9 +2,6 @@
 // Don't fotget to update topics in devevents-api
 // !!!
 const topics = {
-  clojure: {
-    name: "Clojure"
-  },
   cpp: {
     name: "C/C++"
   },
@@ -21,7 +18,7 @@ const topics = {
     name: "Data/AI/ML"
   },
   devops: {
-    name: "DevOps"
+    name: "DevOps/Cloud"
   },
   dotnet: {
     name: ".NET"
@@ -85,9 +82,6 @@ const topics = {
   },
   vr: {
     name: "AR/VR/XR"
-  },
-  cloud: {
-    name: "Cloud"
   },
   fp: {
     name: "Functional programming"

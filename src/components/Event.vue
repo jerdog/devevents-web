@@ -9,7 +9,7 @@
         </span>
         <span v-else-if="$store.state.sorting === 'newestFirst'">
           added
-          {{ formatCreationDate(event.creationDate) }}
+          {{ formatRelative(event.creationDate) }}
         </span>
         <br />
       </span>
@@ -115,7 +115,7 @@
   </div>
 </template>
 <script>
-import { formatRange, formatCreationDate } from "@/utils/dates";
+import { formatRange, formatRelative } from "@/utils/dates";
 import navigationMixins from "@/mixins/navigation";
 import { mapGetters, mapActions } from "vuex";
 import JsonLd from "./JsonLd";
@@ -138,7 +138,7 @@ export default {
   },
   methods: {
     formatRange,
-    formatCreationDate,
+    formatRelative,
     year(date) {
       return dayjs(date).year();
     },

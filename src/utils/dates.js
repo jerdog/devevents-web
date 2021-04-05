@@ -19,7 +19,7 @@ export function tomorrow() {
     .toDate();
 }
 
-export function formatCreationDate(startDate) {
+export function formatRelative(startDate) {
   return dayjs(startDate).fromNow();
 }
 
