@@ -25,7 +25,13 @@
           <th>&nbsp;</th>
         </thead>
         <tbody>
-          <tr v-bind:key="event.id" v-for="(event, index) in expiredEvents">
+          <tr
+            v-bind:key="event.id"
+            v-for="(event, index) in expiredEvents"
+            v-bind:class="{
+              'has-text-grey-lighter': remindedEvents.includes(event.id)
+            }"
+          >
             <td>{{ index + 1 }}</td>
             <td>
               {{ event.name }}
@@ -37,7 +43,7 @@
               <div class="buttons">
                 <a
                   class="button is-small"
-                  :href="linkToTweet(event)"
+                  @click="tweet(event)"
                   target="_blank"
                 >
                   <span>
@@ -54,6 +60,7 @@
   </div>
 </template>
 <script>
+import { mapState, mapActions } from "vuex";
 import lazyAxios from "../utils/axios";
 import { formatRelative } from "@/utils/dates";
 import dayjs from "dayjs";
@@ -74,9 +81,12 @@ export default {
         this.emojis = response.data.emojis;
       });
   },
+  computed: {
+    ...mapState("admin", ["remindedEvents"])
+  },
   methods: {
-    formatRelative,
-    linkToTweet({
+    tweet({
+      id,
       twitter,
       name,
       countryCode,
@@ -84,6 +94,8 @@ export default {
       endDate,
       category = "conference"
     }) {
+      this.reminded(id);
+
       const organizer = `@${twitter}%0A%0A`;
       const endedOn = dayjs(endDate).format("MMM DD, YYYY");
       const expiredAgo = formatRelative(endDate);
@@ -96,8 +108,10 @@ export default {
 
       const text = organizer + message + callToAction;
 
-      return `https://twitter.com/intent/tweet?text=${text}`;
-    }
+      window.open(`https://twitter.com/intent/tweet?text=${text}`, "_blank");
+    },
+    formatRelative,
+    ...mapActions("admin", ["reminded"])
   }
 };
 </script>

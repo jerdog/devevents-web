@@ -5,6 +5,7 @@ import lazyAxios from "../utils/axios";
 import auth from "./auth";
 import creation from "./creation";
 import fetching from "./fetching";
+import admin from "./admin";
 import router from "../router";
 
 import createPersistedState from "vuex-persistedstate";
@@ -13,12 +14,16 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   plugins: [
-    createPersistedState({ key: "devevents", paths: ["auth", "sorting"] })
+    createPersistedState({
+      key: "devevents",
+      paths: ["auth", "sorting", "admin"]
+    })
   ],
   modules: {
     creation,
     fetching,
-    auth
+    auth,
+    admin
   },
   state: {
     continents: {
