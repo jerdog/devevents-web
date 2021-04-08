@@ -17,7 +17,7 @@
     </section>
     <section class="section">
       <h1 class="title">Expired events</h1>
-      <table class="table is-fullwidth is-striped">
+      <table class="table is-fullwidth">
         <thead>
           <th>#</th>
           <th>Event</th>
@@ -29,12 +29,16 @@
             v-bind:key="event.id"
             v-for="(event, index) in expiredEvents"
             v-bind:class="{
-              'has-text-grey-lighter': remindedEvents.includes(event.id)
+              'has-background-success-light has-text-strikethrough': remindedEvents.includes(
+                event.id
+              )
             }"
           >
             <td>{{ index + 1 }}</td>
             <td>
-              {{ event.name }}
+              <router-link :to="{ name: 'conf', params: { id: event.id } }">{{
+                event.name
+              }}</router-link>
             </td>
             <td>
               {{ formatRelative(event.endDate) }}
@@ -115,3 +119,8 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+.has-text-strikethrough {
+  text-decoration: line-through;
+}
+</style>
