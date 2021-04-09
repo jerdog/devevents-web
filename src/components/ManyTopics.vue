@@ -1,14 +1,8 @@
 <template>
   <span>
-    <span v-for="(topic, index) in topics" v-bind:key="topic">
-      <span v-if="topics.length !== 1 && index === topics.length - 1">
-        and
-      </span>
-      <router-link :class="classes" :to="route('confs', { topic })">{{
-        topicName(topic)
-      }}</router-link>
-      <span v-if="topics.length !== 2 && index !== topics.length - 1">, </span>
-    </span>
+    <router-link :class="classes" :to="route('confs', { topic: topics[0] })">{{
+      topicName(topics[0])
+    }}</router-link>
   </span>
 </template>
 <script>
