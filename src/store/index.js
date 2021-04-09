@@ -26,7 +26,14 @@ export default new Vuex.Store({
     admin
   },
   state: {
-    continents: {},
+    continents: {
+      EU: "EU",
+      AM: "America",
+      AS: "Asia",
+      AF: "Africa",
+      OC: "Oceania",
+      ON: "Online"
+    },
     allTopics: {},
     allTopicsOrdered: [],
     countries: [],
@@ -50,11 +57,11 @@ export default new Vuex.Store({
     async bootstrap({ commit }) {
       const axios = await lazyAxios();
       return axios.get(`/bootstrap`).then(({ data }) => {
-        const { continents, allTopics } = data;
+        const { allTopics } = data;
         const allTopicsOrdered = Object.keys(allTopics)
           .map(code => ({ code: code, name: allTopics[code].name }))
           .sort((it, that) => it.name.localeCompare(that.name));
-        commit("bootstrap", { continents, allTopics, allTopicsOrdered });
+        commit("bootstrap", { allTopics, allTopicsOrdered });
       });
     },
     async moreEvents({ commit, state }) {
@@ -115,8 +122,7 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    bootstrap(state, { continents, allTopics, allTopicsOrdered }) {
-      state.continents = continents;
+    bootstrap(state, { allTopics, allTopicsOrdered }) {
       state.allTopics = allTopics;
       state.allTopicsOrdered = allTopicsOrdered;
     },
