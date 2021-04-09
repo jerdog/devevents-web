@@ -19,7 +19,7 @@ export default {
           params: {
             continent,
             country: event.countryCode != "ON" ? event.countryCode : undefined,
-            topic: event.topics[0]
+            topic: event.topic
           }
         });
       };
