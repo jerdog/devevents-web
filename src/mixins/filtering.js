@@ -1,8 +1,7 @@
-import { topics } from "../utils/topics";
 const mixin = {
   methods: {
     topicName() {
-      const topic = topics[this.$route.params.topic];
+      const topic = this.$store.state.allTopics[this.$route.params.topic];
       return topic ? topic.name : "";
     },
     locationName() {

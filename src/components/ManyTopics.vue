@@ -7,7 +7,7 @@
 </template>
 <script>
 import navigationMixins from "@/mixins/navigation";
-import { topics } from "../utils/topics";
+import { mapState } from "vuex";
 export default {
   mixins: navigationMixins,
   props: {
@@ -20,9 +20,12 @@ export default {
       type: Array
     }
   },
+  computed: {
+    ...mapState(["allTopics"])
+  },
   methods: {
     topicName(code) {
-      const topic = topics[code];
+      const topic = this.allTopics[code];
       return topic ? topic.name : "";
     }
   }

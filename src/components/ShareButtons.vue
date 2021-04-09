@@ -79,13 +79,16 @@
 <script>
 import { formatRange } from "@/utils/dates";
 import dayjs from "dayjs";
-import { topics as allTopics } from "@/utils/topics";
+import { mapState } from "vuex";
 export default {
   props: {
     event: {
       type: Object,
       required: true
     }
+  },
+  computed: {
+    ...mapState(["allTopics"])
   },
   methods: {
     twitterText() {
@@ -121,7 +124,7 @@ export default {
     },
     topicName() {
       const [firstTopicCode] = this.event.topics;
-      const topic = allTopics[firstTopicCode];
+      const topic = this.allTopics[firstTopicCode];
       return topic.name;
     }
   }
