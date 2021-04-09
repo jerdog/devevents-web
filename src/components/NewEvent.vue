@@ -43,7 +43,7 @@
             <div class="control">
               <v-select
                 filterable
-                :options="topicsOrdered"
+                :options="allTopicsOrdered"
                 v-model="newEvent.topic"
                 label="name"
                 :class="{ 'is-danger': validationErrors.topic }"
@@ -327,13 +327,11 @@ import DatePicker from "v-calendar/lib/components/date-picker.umd";
 import { Locale } from "v-calendar";
 import { mapState, mapActions } from "vuex";
 import { tomorrow } from "../utils/dates";
-import { topicsOrdered } from "../utils/topics";
 import states from "../utils/states";
 const locale = new Locale();
 export default {
   data: () => {
     return {
-      topicsOrdered,
       states: states,
       newEvent: {
         category: "conference",
@@ -392,6 +390,7 @@ export default {
     isUSA() {
       return this.newEvent.countryCode === "US";
     },
+    ...mapState(["allTopicsOrdered"]),
     ...mapState("creation", {
       validationErrors: state => state.validationErrors,
       globalError: state => state.globalError,

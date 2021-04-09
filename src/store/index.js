@@ -26,14 +26,9 @@ export default new Vuex.Store({
     admin
   },
   state: {
-    continents: {
-      EU: "EU",
-      AM: "America",
-      AS: "Asia",
-      AF: "Africa",
-      OC: "Oceania",
-      ON: "Online"
-    },
+    continents: {},
+    allTopics: {},
+    allTopicsOrdered: [],
     countries: [],
     isOnline: false,
     sorting: "startDate",
@@ -52,6 +47,114 @@ export default new Vuex.Store({
     country: ""
   },
   actions: {
+    bootstrap({ commit }) {
+      const continents = {
+        EU: "EU",
+        AM: "America",
+        AS: "Asia",
+        AF: "Africa",
+        OC: "Oceania",
+        ON: "Online"
+      };
+      const allTopics = {
+        cpp: {
+          name: "C/C++"
+        },
+        mobile: {
+          name: "Mobile"
+        },
+        iot: {
+          name: "Hardware/IoT"
+        },
+        web: {
+          name: "Web/Frontend"
+        },
+        data: {
+          name: "Data/AI/ML"
+        },
+        devops: {
+          name: "DevOps/Cloud"
+        },
+        dotnet: {
+          name: ".NET"
+        },
+        elixir: {
+          name: "Elixir"
+        },
+        react: {
+          name: "React"
+        },
+        fullstack: {
+          name: "Architecture/Full-stack"
+        },
+        golang: {
+          name: "Golang"
+        },
+        java: {
+          name: "Java"
+        },
+        javascript: {
+          name: "JavaScript"
+        },
+        leadership: {
+          name: "Leadership/Management"
+        },
+        game: {
+          name: "Game development"
+        },
+        architecture: {
+          name: "Software architecture"
+        },
+        agile: {
+          name: "Agile"
+        },
+        php: {
+          name: "PHP"
+        },
+        oss: {
+          name: "Open source"
+        },
+        product: {
+          name: "Product/UX"
+        },
+        python: {
+          name: "Python"
+        },
+        ruby: {
+          name: "Ruby and Rails"
+        },
+        security: {
+          name: "Security"
+        },
+        qa: {
+          name: "Testing/QA"
+        },
+        blockchain: {
+          name: "Blockchain"
+        },
+        recruit: {
+          name: "Career/Hiring/HR"
+        },
+        vr: {
+          name: "AR/VR/XR"
+        },
+        fp: {
+          name: "Functional programming"
+        },
+        fintech: {
+          name: "Fintech"
+        },
+        rust: {
+          name: "Rust"
+        }
+      };
+
+      const allTopicsOrdered = Object.keys(allTopics)
+        .map(code => ({ code: code, name: allTopics[code].name }))
+        .sort((it, that) => it.name.localeCompare(that.name));
+
+      commit("bootstrap", { continents, allTopics, allTopicsOrdered });
+    },
     async moreEvents({ commit, state }) {
       commit("fetchingInProgress");
       const axios = await lazyAxios();
@@ -110,6 +213,11 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    bootstrap(state, { continents, allTopics, allTopicsOrdered }) {
+      state.continents = continents;
+      state.allTopics = allTopics;
+      state.allTopicsOrdered = allTopicsOrdered;
+    },
     fetchingInProgress(state) {
       state.doneFetching = false;
     },

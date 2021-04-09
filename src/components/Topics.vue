@@ -22,7 +22,6 @@
   </div>
 </template>
 <script>
-import { topicsOrdered } from "../utils/topics";
 import { mapState } from "vuex";
 import mixins from "@/mixins/navigation";
 export default {
@@ -41,7 +40,7 @@ export default {
   },
   computed: mapState({
     topics: state =>
-      topicsOrdered
+      state.allTopicsOrdered
         .filter(({ code }) => state.topics[code])
         .map(({ code, name }) => ({ code, name, count: state.topics[code] }))
   })

@@ -103,5 +103,8 @@ if (process.env.NODE_ENV === "development") {
 new Vue({
   router,
   store,
+  created() {
+    store.dispatch("bootstrap");
+  },
   render: h => h(App)
 }).$mount("#app");
