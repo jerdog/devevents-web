@@ -64,7 +64,7 @@
             class="tag is-borderless"
             :to="{ name: 'edit', params: { id: event.id } }"
           >
-            <font-awesome-icon icon="edit" />
+            <font-awesome-icon icon="edit" title="Edit event" />
           </router-link>
           <a class="tag is-borderless" @click="deleteEvent(event.id)">
             <font-awesome-icon icon="times" class="has-text-danger" />
