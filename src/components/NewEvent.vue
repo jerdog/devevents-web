@@ -312,7 +312,7 @@
           close
         </button>
         <button class="button is-success" @click="submitForm()">
-          Submit
+          submit
         </button>
       </div>
       <button
