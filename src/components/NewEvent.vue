@@ -18,7 +18,7 @@
             <div class="control">
               <div class="buttons has-addons">
                 <button
-                  class="button"
+                  class="button is-capitalized"
                   v-bind:key="type"
                   v-for="type in types"
                   @click="newEvent.category = type"
@@ -42,13 +42,11 @@
           <div class="field">
             <div class="control">
               <v-select
-                multiple
                 filterable
                 :options="topicsOrdered"
-                v-model="newEvent.topics"
+                v-model="newEvent.topic"
                 label="name"
-                :class="{ 'is-danger': validationErrors.topics }"
-                :selectable="() => newEvent.topics.length < 3"
+                :class="{ 'is-danger': validationErrors.topic }"
                 :reduce="item => item.code"
               >
                 <template #search="{ attributes, events }">
@@ -308,10 +306,10 @@
 
       <hr />
       <div class="buttons is-pulled-right">
-        <button class="button" @click="close()">
+        <button class="button is-capitalized" @click="close()">
           close
         </button>
-        <button class="button is-success" @click="submitForm()">
+        <button class="button is-success is-capitalized" @click="submitForm()">
           submit
         </button>
       </div>
@@ -339,7 +337,7 @@ export default {
       states: states,
       newEvent: {
         category: "conference",
-        topics: [],
+        topic: undefined,
         price: {
           free: false
         },
@@ -347,16 +345,14 @@ export default {
           start: undefined,
           end: undefined
         },
-        countryCode: undefined,
-        description: ""
+        countryCode: undefined
       }
     };
   },
   created() {
     const { topic, continent, country } = this.$route.query;
-
     if (topic) {
-      this.newEvent.topics.push(topic);
+      this.newEvent.topic = topic;
     }
     if (continent === "ON") {
       this.newEvent.countryCode = "ON";
