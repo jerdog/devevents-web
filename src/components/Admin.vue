@@ -61,6 +61,10 @@
         </tbody>
       </table>
     </section>
+    <section class="section">
+      <h1 class="title">Yoda operations</h1>
+      <button class="button is-danger" @click="migrate()">Migrate data</button>
+    </section>
   </div>
 </template>
 <script>
@@ -89,6 +93,9 @@ export default {
     ...mapState("admin", ["remindedEvents"])
   },
   methods: {
+    migrate() {
+      lazyAxios().then(axios => axios.get(`/admin/migrate/`));
+    },
     tweet({
       id,
       twitter,
