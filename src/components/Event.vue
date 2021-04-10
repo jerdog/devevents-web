@@ -25,12 +25,12 @@
       <br />
     </div>
     <div class="column is-narrow">
-      <figure class="image is-32x32" v-if="event.featured">
+      <figure class="image is-48x48" v-if="event.featured">
         <a :href="event.url" target="_blank">
           <img
             :src="'https://dossier.glitch.me/avatar/' + event.twitter"
             :alt="'Twitter icon for ' + event.name"
-            class="icon is-rounded"
+            class="is-rounded"
           />
         </a>
       </figure>

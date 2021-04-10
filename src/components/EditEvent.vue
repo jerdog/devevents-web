@@ -15,7 +15,7 @@
       <hr />
       <div class="buttons is-pulled-right">
         <button class="button" @click="close()">
-          close
+          Close
         </button>
         <button class="button is-success" @click="save()">
           Save
