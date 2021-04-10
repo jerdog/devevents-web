@@ -1,7 +1,7 @@
 <template>
   <span>
-    <router-link :class="classes" :to="route('confs', { topic: topics[0] })">{{
-      topicName(topics[0])
+    <router-link :class="classes" :to="route('confs', { topic })">{{
+      topicName()
     }}</router-link>
   </span>
 </template>
@@ -21,11 +21,14 @@ export default {
     }
   },
   computed: {
+    topic() {
+      return this.$route.params.topic || this.topics[0];
+    },
     ...mapState(["allTopics"])
   },
   methods: {
-    topicName(code) {
-      const topic = this.allTopics[code];
+    topicName() {
+      const topic = this.allTopics[this.topic];
       return topic ? topic.name : "";
     }
   }
