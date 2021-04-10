@@ -96,15 +96,7 @@ export default {
     migrate() {
       lazyAxios().then(axios => axios.get(`/admin/migrate/`));
     },
-    tweet({
-      id,
-      twitter,
-      name,
-      countryCode,
-      city,
-      endDate,
-      category = "conference"
-    }) {
+    tweet({ id, twitter, name, countryCode, city, endDate, category }) {
       this.reminded(id);
 
       const organizer = `@${twitter}%0A%0A`;

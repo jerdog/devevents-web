@@ -120,7 +120,7 @@ export default {
       return `https://dev.events/conferences/${this.event.id}`;
     },
     category() {
-      return this.event.category || "conference";
+      return this.event.category;
     },
     topicName() {
       const [firstTopicCode] = this.event.topics;

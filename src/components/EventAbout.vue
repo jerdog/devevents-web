@@ -37,7 +37,7 @@
                         Online
                       </span>
                       <ManyTopics :topics="event.topics" />
-                      {{ event.category || "conference" }}
+                      {{ event.category }}
                       <span v-if="event.countryCode !== 'ON'">
                         in {{ event.city }}, {{ event.country }}</span
                       >
@@ -102,7 +102,7 @@
         class="has-text-white section is-size-1 is-size-3-mobile has-text-centered"
       >
         ¯\_(ツ)_/¯ <br /><br />Preview is not available. <br />Visit
-        {{ event.category || "conference" }}'s website directly:
+        {{ event.category }}'s website directly:
         <br />
         <br />
         <a

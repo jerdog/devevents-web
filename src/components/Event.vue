@@ -76,7 +76,7 @@
           classes="has-text-grey-dark has-text-weight-bold"
           :topics="event.topics"
         />
-        {{ event.category || "conference"
+        {{ event.category
         }}<span v-if="event.countryCode === 'ON'"
           >,<router-link
             class="has-text-grey-dark has-text-weight-bold"
