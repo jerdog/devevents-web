@@ -58,8 +58,8 @@ export default new Vuex.Store({
       const axios = await lazyAxios();
       return axios.get(`/bootstrap`).then(({ data }) => {
         const { allTopics } = data;
-        const allTopicsOrdered = Object.keys(allTopics)
-          .map(code => ({ code: code, name: allTopics[code].name }))
+        const allTopicsOrdered = Object.entries(allTopics)
+          .map(([code, { name }]) => ({ code, name }))
           .sort((it, that) => it.name.localeCompare(that.name));
         commit("bootstrap", { allTopics, allTopicsOrdered });
       });
@@ -139,7 +139,9 @@ export default new Vuex.Store({
       const [events, meta] = data;
       state.events = merge ? state.events.concat(events) : events;
       state.topics = meta.topics;
-      state.countries = meta.countries.filter(({ code }) => code !== "ON");
+      state.countries = meta.countries
+        .filter(({ code }) => code !== "ON")
+        .sort((it, that) => it.name.localeCompare(that.name));
       state.free = meta.free;
       state.doneFetching = true;
       state.countryName = meta.countryName;

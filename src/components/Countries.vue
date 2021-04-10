@@ -31,12 +31,7 @@ import mixins from "@/mixins/navigation";
 export default {
   mixins,
   computed: {
-    ...mapState([
-      "countries",
-      {
-        countries: state => state.countries.filter(({ code }) => code !== "ON")
-      }
-    ])
+    ...mapState(["countries"])
   },
   methods: {
     isActive(country) {
