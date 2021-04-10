@@ -13,27 +13,9 @@ $info-invert: #fff;
 $family-sans-serif: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial,
   sans-serif;
 
-$thickness: 1px;
-
 $pagination-current-border: darken($primary, 5);
 
 $navbar-item-active-color: $primary;
-
-$dropdown-content-shadow: 0 0 0 1px #dbdbdb, 0 #{$thickness} 0 1px #dbdbdb;
-
-$navbar-dropdown-boxed-shadow: $dropdown-content-shadow;
-
-$box-shadow: none;
-
-$input-background-color: #fafafa;
-$input-placeholder-color: #D3D3D3;
-
-.button {
-  &.is-hovered,
-  &:hover {
-    border-bottom-width: $thickness !important;
-  }
-}
 
 .is-borderless {
   border: none !important;
@@ -41,10 +23,6 @@ $input-placeholder-color: #D3D3D3;
 
 .is-striked {
   text-decoration: line-through;
-}
-
-.is-space-preline {
-  white-space: pre-line;
 }
 
 .has-text-nowrap {
@@ -60,15 +38,6 @@ h1.is-1.title {
   background: none !important;
 }
 
-input,
-select {
-  background-color: $input-background-color !important;
-}
-
-.select select:not([multiple]) {
-  height: 2.5em !important;
-}
-
 .select:not(.is-multiple):not(.is-loading)::after {
   border-color: hsl(0, 0%, 86%) !important;
 }
@@ -79,8 +48,7 @@ select {
   border: 1px solid #f5f5f5 !important;
 }
 
-$vs-component-line-height: 1.9;
-$vs-component-placeholder-color: $input-placeholder-color;
+$vs-component-line-height: 1.6;
 $vs-border-color:  hsl(0, 0%, 86%);
 
 $vs-state-active-bg: $green;
@@ -88,16 +56,6 @@ $vs-state-active-bg: $green;
 .is-danger .vs__dropdown-toggle {
   border: 1px solid $red !important;
 }
-
-.vs__dropdown-toggle {
-  background-color: $input-background-color !important;
-}
-
-.box {
-  box-shadow: none !important;
-  height: 100%;
-}
-
 
 @import "vue-loading-overlay/dist/vue-loading";
 @import "vue-select/src/scss/vue-select.scss";

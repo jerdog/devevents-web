@@ -32,6 +32,9 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+a:hover {
+  text-decoration: none;
+}
 .is-active a {
   color: #4a4a4a !important;
   border-color: #4a4a4a !important;
