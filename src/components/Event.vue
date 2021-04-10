@@ -74,6 +74,7 @@
       <h3 class="subtitle is-6">
         <ManyTopics
           classes="has-text-grey-dark has-text-weight-bold"
+          :featured="event.featured"
           :topics="event.topics"
         />
         {{ event.category

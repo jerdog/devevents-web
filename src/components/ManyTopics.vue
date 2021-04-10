@@ -18,11 +18,19 @@ export default {
     topics: {
       default: () => [],
       type: Array
+    },
+    featured: {
+      type: Boolean,
+      required: true
     }
   },
   computed: {
     topic() {
-      return this.$route.params.topic || this.topics[0];
+      if (this.featured) {
+        return this.topics[0];
+      } else {
+        return this.$route.params.topic || this.topics[0];
+      }
     },
     ...mapState(["allTopics"])
   },
