@@ -3,19 +3,20 @@
     <Header />
     <aside class="container">
       <section class="section">
-        <div class="columns is-multiline is-mobile">
-          <div
-            class="column is-half-desktop is-full-mobile has-text-centered-mobile"
-          ></div>
-          <div class="column is-half-desktop is-full-mobile">
-            <Continents />
+        <div class="columns is-multiline is-mobile is-vcentered">
+          <div class="column is-two-thirds-desktop is-full-tablet">
+            <h1 class="title is-1 is-size-3-mobile">
+              <em v-if="topicName()">
+                {{ topicName() }}
+              </em>
+              <span v-else>Developer</span>
+              conferences 2011/2022 <em>{{ locationName() }}</em>
+            </h1>
+          </div>
+          <div class="column is-one-third-desktop is-full-mobile">
             <div class="is-pulled-right">
               <div class="select is-small" @change="sortingChanged()">
-                <select
-                  aria-label="Sorting"
-                  v-model="$store.state.sorting"
-                  class="is-borderless has-background-white"
-                >
+                <select aria-label="Sorting" v-model="$store.state.sorting">
                   <option value="newestFirst">Sort by date added</option>
                   <option value="cheapestFirst">Free first</option>
                   <option value="startDate">Sort by date</option>
@@ -118,7 +119,6 @@ import filteringMixins from "@/mixins/filtering";
 import { mapState, mapActions } from "vuex";
 import Event from "./Event";
 import Topics from "./Topics";
-import Continents from "./Continents";
 import Countries from "./Countries";
 import Header from "./Header";
 import PlusButton from "./PlusButton";
@@ -129,7 +129,6 @@ export default {
   components: {
     Event,
     Header,
-    Continents,
     Countries,
     Topics,
     PagingStats,
@@ -201,3 +200,9 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+em {
+  font-style: normal;
+  border-bottom: 1px dotted black !important;
+}
+</style>

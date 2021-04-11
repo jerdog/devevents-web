@@ -1,7 +1,7 @@
 <template>
   <div class="columns is-multiline is-gapless">
     <div
-      class="country column is-full"
+      class="country column is-full is-size-7-mobile"
       :class="{ 'is-active': isActive(country.code) }"
       v-for="country in countries"
       :key="country.code"

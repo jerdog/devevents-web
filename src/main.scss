@@ -16,6 +16,11 @@ $family-sans-serif: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial,
 $pagination-current-border: darken($primary, 5);
 
 $navbar-item-active-color: $primary;
+$tabs-border-bottom-style: none;
+$tabs-link-color: #f5f5f5;
+$tabs-link-active-color: #f5f5f5;
+$tabs-link-hover-color: #f5f5f5;
+$tabs-link-padding: 8px;
 
 .is-borderless {
   border: none !important;
@@ -29,8 +34,8 @@ $navbar-item-active-color: $primary;
   white-space: nowrap;
 }
 
-h1.is-1.title {
-  letter-spacing: -3px;
+.is-1.title, .is-2.title {
+  letter-spacing: -2px;
 }
 
 .is-outlined, .is-outlined:hover {

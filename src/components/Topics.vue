@@ -1,5 +1,5 @@
 <template>
-  <div class="columns is-multiline is-gapless">
+  <div class="columns is-multiline is-gapless is-size-7-mobile">
     <div
       v-for="topic in topics"
       :key="topic.code"

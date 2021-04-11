@@ -43,7 +43,7 @@
       </figure>
     </div>
     <div class="column">
-      <h2 class="title is-5">
+      <h2 class="title is-5 is-size-6-mobile">
         <a
           :href="event.url"
           target="_blank"
@@ -71,7 +71,7 @@
           </a>
         </span>
       </h2>
-      <h3 class="subtitle is-6">
+      <h3 class="subtitle is-6 is-size-7-mobile">
         <ManyTopics
           classes="has-text-grey-dark has-text-weight-bold"
           :featured="event.featured"

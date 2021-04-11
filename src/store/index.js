@@ -27,14 +27,15 @@ export default new Vuex.Store({
   },
   state: {
     continents: {
-      EU: "EU",
-      AM: "America",
+      EU: "Europe",
+      AM: "Americas",
       AS: "Asia",
       AF: "Africa",
       OC: "Oceania",
       ON: "Online"
     },
     allTopics: {},
+    allCountries: {},
     countries: [],
     isOnline: false,
     sorting: "startDate",
@@ -56,8 +57,8 @@ export default new Vuex.Store({
     async bootstrap({ commit }) {
       const axios = await lazyAxios();
       return axios.get(`/bootstrap`).then(({ data }) => {
-        const { allTopics } = data;
-        commit("bootstrap", { allTopics });
+        const { allTopics, allCountries } = data;
+        commit("bootstrap", { allTopics, allCountries });
       });
     },
     async moreEvents({ commit, state }) {
@@ -118,8 +119,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    bootstrap(state, { allTopics }) {
+    bootstrap(state, { allTopics, allCountries }) {
       state.allTopics = allTopics;
+      state.allCountries = allCountries;
     },
     fetchingInProgress(state) {
       state.doneFetching = false;

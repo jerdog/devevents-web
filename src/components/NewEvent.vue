@@ -397,7 +397,7 @@ export default {
           .map(([code, { name }]) => ({ code, name }))
           .sort((it, that) => it.name.localeCompare(that.name)),
       allCountriesOrdered: state =>
-        Object.entries(state.creation.countries)
+        Object.entries(state.allCountries)
           .map(([code, { name, continent }]) => ({ code, name, continent }))
           .sort((it, that) => it.name.localeCompare(that.name))
     }),
