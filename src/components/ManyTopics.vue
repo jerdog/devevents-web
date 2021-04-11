@@ -21,7 +21,7 @@ export default {
     },
     featured: {
       type: Boolean,
-      required: true
+      default: false
     }
   },
   computed: {

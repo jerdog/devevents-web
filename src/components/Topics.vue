@@ -38,12 +38,9 @@ export default {
       }
     }
   },
-  computed: mapState({
-    topics: state =>
-      state.allTopicsOrdered
-        .filter(({ code }) => state.topics[code])
-        .map(({ code, name }) => ({ code, name, count: state.topics[code] }))
-  })
+  computed: {
+    ...mapState(["topics"])
+  }
 };
 </script>
 <style scoped lang="scss">

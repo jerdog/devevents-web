@@ -153,7 +153,7 @@
                     @change="countrySelected()"
                   >
                     <option
-                      v-for="country in countries"
+                      v-for="country in allCountriesOrdered"
                       :key="country.code"
                       :value="country.code"
                       >{{ country.name }}</option
@@ -391,13 +391,17 @@ export default {
     isUSA() {
       return this.newEvent.countryCode === "US";
     },
-    ...mapState(["allTopicsOrdered"]),
-    ...mapState("creation", [
-      "validationErrors",
-      "globalError",
-      "types",
-      "countries"
-    ])
+    ...mapState({
+      allTopicsOrdered: state =>
+        Object.entries(state.allTopics)
+          .map(([code, { name }]) => ({ code, name }))
+          .sort((it, that) => it.name.localeCompare(that.name)),
+      allCountriesOrdered: state =>
+        Object.entries(state.creation.countries)
+          .map(([code, { name, continent }]) => ({ code, name, continent }))
+          .sort((it, that) => it.name.localeCompare(that.name))
+    }),
+    ...mapState("creation", ["validationErrors", "globalError", "types"])
   },
   mounted() {
     this.fetchInfo();

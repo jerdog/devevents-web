@@ -35,7 +35,6 @@ export default new Vuex.Store({
       ON: "Online"
     },
     allTopics: {},
-    allTopicsOrdered: [],
     countries: [],
     isOnline: false,
     sorting: "startDate",
@@ -58,10 +57,7 @@ export default new Vuex.Store({
       const axios = await lazyAxios();
       return axios.get(`/bootstrap`).then(({ data }) => {
         const { allTopics } = data;
-        const allTopicsOrdered = Object.entries(allTopics)
-          .map(([code, { name }]) => ({ code, name }))
-          .sort((it, that) => it.name.localeCompare(that.name));
-        commit("bootstrap", { allTopics, allTopicsOrdered });
+        commit("bootstrap", { allTopics });
       });
     },
     async moreEvents({ commit, state }) {
@@ -122,9 +118,8 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    bootstrap(state, { allTopics, allTopicsOrdered }) {
+    bootstrap(state, { allTopics }) {
       state.allTopics = allTopics;
-      state.allTopicsOrdered = allTopicsOrdered;
     },
     fetchingInProgress(state) {
       state.doneFetching = false;
@@ -138,7 +133,9 @@ export default new Vuex.Store({
     eventsFetched(state, { data, merge = false }) {
       const [events, meta] = data;
       state.events = merge ? state.events.concat(events) : events;
-      state.topics = meta.topics;
+      state.topics = meta.topics.sort((it, that) =>
+        it.name.localeCompare(that.name)
+      );
       state.countries = meta.countries
         .filter(({ code }) => code !== "ON")
         .sort((it, that) => it.name.localeCompare(that.name));
