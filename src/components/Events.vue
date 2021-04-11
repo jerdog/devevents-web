@@ -16,7 +16,7 @@
                   v-model="$store.state.sorting"
                   class="is-borderless has-background-white"
                 >
-                  <option value="newestFirst">Newest first</option>
+                  <option value="newestFirst">Sort by date added</option>
                   <option value="cheapestFirst">Free first</option>
                   <option value="startDate">Sort by date</option>
                 </select>
