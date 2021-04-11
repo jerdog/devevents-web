@@ -6,12 +6,13 @@
         <span v-if="event.featured">
           <font-awesome-icon :icon="['far', 'heart']" class="has-text-danger" />
           Best seller
+          <br />
         </span>
         <span v-else-if="$store.state.sorting === 'newestFirst'">
           added
           {{ formatRelative(event.creationDate) }}
+          <br />
         </span>
-        <br />
       </span>
       <time class="has-text-weight-bold is-size-7-mobile">
         {{ formatRange(event.startDate, event.endDate) }}
