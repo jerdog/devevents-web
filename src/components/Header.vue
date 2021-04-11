@@ -7,7 +7,7 @@
     >
       <div class="container">
         <div class="columns is-vcentered is-mobile">
-          <div class="column is-narrow">
+          <div class="column">
             <router-link :to="{ path: '/' }">
               <h1
                 class="title is-size-4 is-size-6-mobile"
@@ -20,12 +20,12 @@
               </h1>
             </router-link>
           </div>
-          <div class="column" v-if="isSignedIn">
+          <div class="column">
             <div class="columns is-mobile is-pulled-right is-vcentered">
-              <div class="column narrow">
-                <Continents class="is-7" />
+              <div class="column">
+                <Continents />
               </div>
-              <div class="column is-narrow">
+              <div class="column" v-if="isSignedIn">
                 <div class="dropdown is-hoverable is-right">
                   <div class="dropdown-trigger">
                     <figure
@@ -67,10 +67,10 @@
               </div>
             </div>
           </div>
-          <div class="column has-text-right" v-else>
-            <Login />
-          </div>
         </div>
+      </div>
+      <div v-if="!isSignedIn">
+        <Login />
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs is-centered is-fullwidth is-size-7-mobile">
+  <div class="tabs is-size-7-mobile">
     <ul>
       <li
         v-for="(name, code) in continents"

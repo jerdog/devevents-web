@@ -1,6 +1,5 @@
 <template>
   <div>
-    <a class="has-text-light is-size-7" @click="signIn()">login</a>
     <div class="modal" v-bind:class="{ 'is-active': authInProgress }">
       <div class="modal-background"></div>
       <div class="modal-content">
