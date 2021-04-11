@@ -79,19 +79,18 @@
           :topics="event.topics"
         />
         {{ event.category
-        }}<span v-if="event.countryCode === 'ON'"
-          >,<router-link
-            class="has-text-grey-dark has-text-weight-bold"
-            :to="
-              route('confs', {
-                country: undefined,
-                continent: event.continentCode
-              })
-            "
-          >
-            {{ event.country }}
-          </router-link>
-        </span>
+        }}<router-link
+          v-if="event.countryCode === 'ON'"
+          class="has-text-grey-dark has-text-weight-bold"
+          :to="
+            route('confs', {
+              country: undefined,
+              continent: event.continentCode
+            })
+          "
+        >
+          {{ event.country }}
+        </router-link>
         <span v-else>
           in
           {{ event.city + (event.stateCode ? `, ${event.stateCode}` : "") }},

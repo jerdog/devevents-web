@@ -1,9 +1,7 @@
 <template>
-  <span>
-    <router-link :class="classes" :to="route('confs', { topic })">{{
-      topicName()
-    }}</router-link>
-  </span>
+  <router-link :class="classes" :to="route('confs', { topic })">{{
+    topicName()
+  }}</router-link>
 </template>
 <script>
 import navigationMixins from "@/mixins/navigation";
