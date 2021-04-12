@@ -1,10 +1,15 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Events from "../components/Events";
-import EventAbout from "../components/EventAbout";
-import NewEvent from "../components/NewEvent";
-import EditEvent from "../components/EditEvent";
-import Admin from "../components/Admin";
+
+const Admin = () =>
+  import(/* webpackChunkName: "admin" */ "../components/Admin");
+const EditEvent = () =>
+  import(/* webpackChunkName: "event-edit" */ "../components/EditEvent");
+const NewEvent = () =>
+  import(/* webpackChunkName: "event-new" */ "../components/NewEvent");
+const EventAbout = () =>
+  import(/* webpackChunkName: "event-about" */ "../components/EventAbout");
 
 Vue.use(VueRouter);
 
