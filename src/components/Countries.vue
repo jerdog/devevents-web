@@ -31,7 +31,16 @@ import mixins from "@/mixins/navigation";
 export default {
   mixins,
   computed: {
-    ...mapState(["countries"])
+    ...mapState({
+      countries: state =>
+        Object.entries(state.countries)
+          .map(([location, count]) => {
+            const [continent, code] = location.split("/");
+            const name = state.allCountries[code].name;
+            return { code, continent, count, name };
+          })
+          .sort((it, that) => it.name.localeCompare(that.name))
+    })
   },
   methods: {
     isActive(country) {

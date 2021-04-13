@@ -189,14 +189,7 @@ export default {
     hasSomeFeatured: function() {
       return this.events.some(({ featured }) => featured === true);
     },
-    ...mapState([
-      "isOnline",
-      "events",
-      "topics",
-      "more",
-      "noEvents",
-      "doneFetching"
-    ])
+    ...mapState(["isOnline", "events", "more", "noEvents", "doneFetching"])
   }
 };
 </script>

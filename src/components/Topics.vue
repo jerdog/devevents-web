@@ -39,7 +39,16 @@ export default {
     }
   },
   computed: {
-    ...mapState(["topics"])
+    ...mapState({
+      topics: state =>
+        Object.entries(state.topics)
+          .map(([code, count]) => ({
+            code,
+            count,
+            name: state.allTopics[code].name
+          }))
+          .sort((it, that) => it.name.localeCompare(that.name))
+    })
   }
 };
 </script>

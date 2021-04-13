@@ -135,12 +135,8 @@ export default new Vuex.Store({
     eventsFetched(state, { data, merge = false }) {
       const [events, meta] = data;
       state.events = merge ? state.events.concat(events) : events;
-      state.topics = meta.topics.sort((it, that) =>
-        it.name.localeCompare(that.name)
-      );
-      state.countries = meta.countries
-        .filter(({ code }) => code !== "ON")
-        .sort((it, that) => it.name.localeCompare(that.name));
+      state.topics = meta.topics;
+      state.countries = meta.countries;
       state.free = meta.free;
       state.doneFetching = true;
       state.countryName = meta.countryName;
