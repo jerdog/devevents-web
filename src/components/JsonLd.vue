@@ -23,7 +23,7 @@ export default {
           url: this.event.url
         }
       : undefined;
-    const online = this.event.country === "Online";
+    const online = this.event.countryCode === "ON";
     const mode = online
       ? "OnlineEventAttendanceMode"
       : "OfflineEventAttendanceMode";

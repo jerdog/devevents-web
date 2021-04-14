@@ -68,7 +68,7 @@
   </div>
 </template>
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState } from "vuex";
 import lazyAxios from "../utils/axios";
 import { formatRelative } from "@/utils/dates";
 import dayjs from "dayjs";
@@ -97,7 +97,7 @@ export default {
       lazyAxios().then(axios => axios.get(`/admin/migrate/`));
     },
     tweet({ id, twitter, name, countryCode, city, endDate, category }) {
-      this.reminded(id);
+      this.$store.dispatch("admin/reminded", id);
 
       const organizer = `@${twitter}%0A%0A`;
       const endedOn = dayjs(endDate).format("MMM DD, YYYY");
@@ -113,8 +113,7 @@ export default {
 
       window.open(`https://twitter.com/intent/tweet?text=${text}`, "_blank");
     },
-    formatRelative,
-    ...mapActions("admin", ["reminded"])
+    formatRelative
   }
 };
 </script>
