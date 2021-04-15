@@ -33,13 +33,15 @@ export default {
   computed: {
     ...mapState({
       countries: state =>
-        Object.entries(state.countries)
-          .map(([location, count]) => {
-            const [continent, code] = location.split("/");
-            const name = state.allCountries[code].name;
-            return { code, continent, count, name };
-          })
-          .sort((it, that) => it.name.localeCompare(that.name))
+        Object.keys(state.allCountries).length
+          ? Object.entries(state.countries)
+              .map(([location, count]) => {
+                const [continent, code] = location.split("/");
+                const name = state.allCountries[code].name;
+                return { code, continent, count, name };
+              })
+              .sort((it, that) => it.name.localeCompare(that.name))
+          : []
     })
   },
   methods: {

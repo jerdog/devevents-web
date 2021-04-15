@@ -41,13 +41,15 @@ export default {
   computed: {
     ...mapState({
       topics: state =>
-        Object.entries(state.topics)
-          .map(([code, count]) => ({
-            code,
-            count,
-            name: state.allTopics[code].name
-          }))
-          .sort((it, that) => it.name.localeCompare(that.name))
+        Object.keys(state.allTopics).length
+          ? Object.entries(state.topics)
+              .map(([code, count]) => ({
+                code,
+                count,
+                name: state.allTopics[code].name
+              }))
+              .sort((it, that) => it.name.localeCompare(that.name))
+          : []
     })
   }
 };

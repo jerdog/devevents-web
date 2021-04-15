@@ -79,13 +79,13 @@
         <div class="column is-two-thirds">
           <section class="section">
             <div class="block" v-if="hasSomeFeatured">
-              <h3 class="title is-4">
+              <h2 class="title is-4">
                 <font-awesome-icon
                   :icon="['far', 'heart']"
                   class="has-text-danger"
                 />
                 Best sellers
-              </h3>
+              </h2>
             </div>
             <Event v-for="event in events" :event="event" :key="event.id">
             </Event>
